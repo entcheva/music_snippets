@@ -8,20 +8,34 @@ module Api::V1
     end
 
     def new
+      find_snippet
+    end
+
+    def create
+      find_snippet
       @snippet = Snippet.create(snippet_params)
       render json: @snippet, serializer: SnippetSerializer
     end
 
-    def create
+    def show
+      render json: find_snippet
     end
 
     def edit
+      find_snippet
     end
 
     def update
+      find_snippet
+      @snippet = Snippet.update(snippet_params)
+      render json: @snippet
     end
 
     def delete
+      find_snippet
+      @snippet.destroy
+      @snippets = Snippets.all
+      render json: @snippets
     end
 
     def destroy
@@ -29,8 +43,12 @@ module Api::V1
 
     private
 
-    def user_params
+    def snippet_params
       params.require(:snippets).permit(:name, :artist, :notes, :date, :user_id)
+    end
+
+    def find_snippet
+      @snippet = Snippet.find(params[:id])
     end
 
   end

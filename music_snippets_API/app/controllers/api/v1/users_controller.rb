@@ -8,21 +8,15 @@ module Api::V1
     end
 
     def new
-      find_user
-      render json: @user
+      render json: find_user
     end
 
     def create
       @user = User.create(user_params)
+    end
 
-      # if params[:password] === params[:password_confirmation]
-      #   @user.password = params[:password]
-      #   @user.save
-      #   render json: {jwt: jwt}
-      # else
-      #   render json: {:errors=> [{:detail=>"failed password verification", :source=>{:pointer=>"user/err_type"}} ] }, status: 404
-      # end
-
+    def show
+      render json: find_user
     end
 
     def edit
@@ -32,16 +26,17 @@ module Api::V1
     def update
       find_user
       @user = User.update(user_params)
+      render json: @user
     end
 
     def delete
       find_user
-    end
-
-    def destroy
       @user.destroy
       @users = User.all
       render json: @users
+    end
+
+    def destroy
     end
 
     private
