@@ -1,33 +1,38 @@
-class UsersController < ApplicationController
+module Api::V1
 
-  def index
-    @users = User.all
-  end
+  class SnippetsController < ApplicationController
 
-  def new
-    @user = User.new(user_params)
-    @user.save
-  end
+    def index
+      @snippets = Snippet.all
+      render json: @snippets, each_serializer: SnippetSerializer
+    end
 
-  def create
-  end
+    def new
+      @snippet = Snippet.create(snippet_params)
+      render json: @snippet, serializer: SnippetSerializer
+    end
 
-  def edit
-  end
+    def create
+    end
 
-  def update
-  end
+    def edit
+    end
 
-  def delete
-  end
+    def update
+    end
 
-  def destroy
-  end
+    def delete
+    end
 
-  private
+    def destroy
+    end
 
-  def user_params
-    params.require(:user).permit(:username, :email, :password, :password_digest)
+    private
+
+    def user_params
+      params.require(:snippets).permit(:name, :artist, :notes, :date, :user_id)
+    end
+
   end
 
 end

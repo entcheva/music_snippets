@@ -4,7 +4,7 @@ module Api::V1
 
     def index
       @users = User.all
-      render json: @users
+      render json: @users, each_serializer: UserSerializer
     end
 
     def new
