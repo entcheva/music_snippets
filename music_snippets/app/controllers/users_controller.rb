@@ -24,31 +24,23 @@ class UsersController < ApplicationController
       find_user
     end
 
-    def edit
-      find_user
-    end
-
-    def update
-      find_user
-      @user = User.update(user_params)
-    end
-
-    def delete
-      find_user
-      @user.destroy
-      @users = User.all
-    end
-
-    def destroy
-    end
-
-    def active_user
-      username = active_user.username
-    end
-
-    def active_user_id
-      user_id = active_user.id
-    end
+    # def edit
+    #   find_user
+    # end
+    #
+    # def update
+    #   find_user
+    #   @user = User.update(user_params)
+    # end
+    #
+    # def delete
+    #   find_user
+    #   @user.destroy
+    #   @users = User.all
+    # end
+    #
+    # def destroy
+    # end
 
     private
 
