@@ -10,6 +10,7 @@ class SnippetsController < ApplicationController
 
     def create
       @snippet = Snippet.create(snippet_params)
+      binding.pry
       @snippet.user_id = @user.id
     end
 

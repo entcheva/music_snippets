@@ -1,1 +1,7 @@
-<h1>hi from dashboard show</h1>
+<h1>hi <%= @user.username %> from dashboard show</h1>
+
+<%= @my_snippets.each do |snippet| %>
+  <%= p snippet.name %>
+  <%= p snippet.artist %>
+  <%= p snippet.notes %>
+<% end %>

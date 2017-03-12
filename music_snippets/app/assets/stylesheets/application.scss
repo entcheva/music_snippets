@@ -20,7 +20,22 @@
 @import 'users';
 @import 'snippets';
 
+$neat-grid: (
+  columns: 12,
+  gutter: 20px,
+);
+
 body {
   font-family: $serif-type;
   font-size: .9em;
+  @include grid-column(12);
+}
+
+a {
+   color: #444;
+ }
+
+a:hover {
+  color: $lightblue;
+  transition: color .3s;
 }

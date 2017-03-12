@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :users, only: [:index, :new, :create, :show]
+  # root to: 'application#index'
+  resource :dashboard, only: [:show]
   resources :snippets, only: [:index, :new, :create, :show]
-  resource :dashboard, only: [:index]
+  resources :users, only: [:create, :show]
+  get '/users/new', to: "users#new", as: 'signup'
 end
