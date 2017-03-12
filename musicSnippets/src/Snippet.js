@@ -1,25 +1,27 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { fetchUsername } from './actions';
+import { fetchUsername, createSnippet } from './actions';
 
 class Snippet extends Component {
 
   constructor() {
   	super();
-
-    this.saveSnippet = this.saveSnippet.bind(this);
+    this.handleSnippet = this.handleSnippet.bind(this);
   }
 
   componentDidMount() {
     // this.props.fetchUsername()
   }
 
-  saveSnippet() {
-
+  handleSnippet() {
+    event.preventDefault();
+    let name = this.refs.name.value;
+    let artist = this.refs.artist.value;
+    let notes = this.refs.notes.value;
+    let snippet = { name: name, artist: artist, notes: notes, user_id: 999 };
+    this.props.createSnippet(snippet);
   }
-
-
 
   render() {
     return (
@@ -30,18 +32,20 @@ class Snippet extends Component {
 
         <div id="snippetForm">
           <h3>Create A New Snippet:</h3>
-          <form onSubmit={ this.saveSnippet }>
+          <form onSubmit={ this.handleSnippet }>
             <label>Name: </label>
-            <input ref="snippetName" placeholder="Hey Jude" />
+            <input ref="name" placeholder="Hey Jude" />
             <br/><br/>
             <label>Artist: </label>
-            <input ref="snippetArtist" placeholder="The Beatles"/>
+            <input ref="artist" placeholder="The Beatles"/>
             <br/><br/>
             <label>Notes: </label>
-            <input ref="snippetNotes" placeholder="F, C, C6, C7, F, C, F"/>
+            <input ref="notes" placeholder="F, C, C6, C7, F, C, F"/>
             <br/><br/>
             <button type="submit">Save Snippet</button>
           </form>
+
+          {this.state}
         </div>
 
 
@@ -55,12 +59,13 @@ class Snippet extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    username: state.user.username
+    // username: state.user.username,
+    snippets: state.snippet,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators( { fetchUsername }, dispatch);
+  return bindActionCreators( { fetchUsername, createSnippet }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Snippet);

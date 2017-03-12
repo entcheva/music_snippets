@@ -12,14 +12,10 @@ module Api::V1
     end
 
     def create
-      find_snippet
-      @snippet = Snippet.create(snippet_params)
+      @snippet = Snippet.create(name: params['name'], artist: params['artist'], notes: params['notes'])
       render json: @snippet, serializer: SnippetSerializer
     end
 
-    def show
-      render json: find_snippet
-    end
 
     def edit
       find_snippet
@@ -36,9 +32,6 @@ module Api::V1
       @snippet.destroy
       @snippets = Snippets.all
       render json: @snippets
-    end
-
-    def destroy
     end
 
     private
