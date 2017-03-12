@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-
-import { createUser } from './actions/index';
+import { createUser } from './actions';
 
 class User extends Component {
 
   constructor() {
     super();
     this.handleSignUp = this.handleSignUp.bind(this);
-    // this.handleLogIn = this.handleLogIn.bind(this);
+    this.handleLogIn = this.handleLogIn.bind(this);
   }
 
   handleSignUp() {
@@ -22,9 +21,9 @@ class User extends Component {
     this.props.createUser(user);
   }
 
-  // handleLogIn() {
-  //   event.preventDefault();
-  // }
+  handleLogIn() {
+    event.preventDefault();
+  }
 
   render() {
     return (
@@ -49,7 +48,7 @@ class User extends Component {
           </form>
         </div>
 
-        {/* <div id="logIn">
+        <div id="logIn">
           <h2>Log In</h2>
           <form onSubmit={ this.handleLogIn }>
             <label>Email: </label>
@@ -60,7 +59,7 @@ class User extends Component {
             <br/><br/>
             <button type="submit">Log In</button>
           </form>
-        </div> */}
+        </div>
 
       </div>
     );

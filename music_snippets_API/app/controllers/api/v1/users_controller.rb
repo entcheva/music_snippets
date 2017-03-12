@@ -1,5 +1,4 @@
 module Api::V1
-
   class UsersController < ApplicationController
 
     def index
@@ -58,6 +57,16 @@ module Api::V1
     def destroy
     end
 
+    def active_user
+      username = active_user.username
+      render json: {username: username}
+    end
+
+    def active_user_id
+      user_id = active_user.id
+      render json: {user_id: user_id}
+    end
+
     private
 
     def user_params
@@ -69,5 +78,4 @@ module Api::V1
     end
 
   end
-
 end
