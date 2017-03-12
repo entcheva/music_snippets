@@ -19,7 +19,6 @@ class User extends Component {
     let password = this.refs.password.value;
     let passwordConfirmation = this.refs.passwordConfirmation.value;
     let user = { username: username, email: email, password: password, password_confirmation: passwordConfirmation };
-
     this.props.createUser(user);
   }
 
