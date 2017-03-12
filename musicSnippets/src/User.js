@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-import { createUser } from './actions/index'
-import { connect } from './actions/index'
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import { createUser } from './actions/index';
 
 class User extends Component {
 
   constructor() {
     super();
     this.handleSignUp = this.handleSignUp.bind(this);
-    this.handleLogIn = this.handleLogIn.bind(this);
+    // this.handleLogIn = this.handleLogIn.bind(this);
   }
 
   handleSignUp() {
@@ -16,14 +18,14 @@ class User extends Component {
     let email = this.refs.email.value;
     let password = this.refs.password.value;
     let passwordConfirmation = this.refs.passwordConfirmation.value;
-    const user = { username: username, email: email, password: password, password_confirmation: passwordConfirmation };
+    let user = { username: username, email: email, password: password, password_confirmation: passwordConfirmation };
 
     this.props.createUser(user);
   }
 
-  handleLogIn() {
-    event.preventDefault();
-  }
+  // handleLogIn() {
+  //   event.preventDefault();
+  // }
 
   render() {
     return (
@@ -48,7 +50,7 @@ class User extends Component {
           </form>
         </div>
 
-        <div id="logIn">
+        {/* <div id="logIn">
           <h2>Log In</h2>
           <form onSubmit={ this.handleLogIn }>
             <label>Email: </label>
@@ -59,18 +61,21 @@ class User extends Component {
             <br/><br/>
             <button type="submit">Log In</button>
           </form>
-        </div>
-
+        </div> */}
 
       </div>
     );
   }
 };
 
-// mapDispatchToProps(dispatch) {
-//   return {
-//     bindActionCreators( {createUser}, dispatch);
-//   }
-// }
-//
-// export default connect(null, mapDispatchToProps)(User);
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators( { createUser }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(User);
