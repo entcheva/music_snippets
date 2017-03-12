@@ -29,7 +29,7 @@ class User extends Component {
     return (
       <div>
 
-        <div id="signUp">
+        <div id="signUpForm">
           <h2>Sign Up</h2>
           <form onSubmit={ this.handleSignUp } >
             <label>Username: </label>
@@ -48,7 +48,7 @@ class User extends Component {
           </form>
         </div>
 
-        <div id="logIn">
+        <div id="logInForm">
           <h2>Log In</h2>
           <form onSubmit={ this.handleLogIn }>
             <label>Email: </label>
