@@ -7,4 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 christina = User.create(username: 'christina', email: 'christina.entcheva@gmail.com', password_digest: 'oidfjglfkdjg')
-lazuli = Snippet.create(name: 'Lazuli', artist: 'Beach House', notes: ['Bm', 'D', 'G', 'Em'], user_id: christina.id)
+lazuli = Snippet.create(name: 'Lazuli', artist: 'Beach House', notes: ['Bm', 'D', 'G', 'Em'], user_id: 1)
+hey_jude = Snippet.create(name: 'Hey Jude', artist: 'The Beatles', notes: ['Bm', 'D', 'G', 'Em'], user_id: 1)

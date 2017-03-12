@@ -9,12 +9,11 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(email: params[:email])
     if @user && @user.authenticate(params[:password])
-      session[:user_id] = @user.id
+      session[:current_user_id] = @user.id
       redirect_to dashboard_path
     else
-      redirect_to signup_path
+      redirect_to login_path
     end
   end
 
@@ -22,6 +21,5 @@ class SessionsController < ApplicationController
     session.clear
     redirect_to signup_path
   end
-
 
 end

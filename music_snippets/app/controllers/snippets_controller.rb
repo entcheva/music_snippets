@@ -10,28 +10,12 @@ class SnippetsController < ApplicationController
 
     def create
       @snippet = Snippet.create(snippet_params)
-      binding.pry
-      @snippet.user_id = @user.id
+      # @snippet.user_id = @user.id
     end
 
     def show
       find_snippet
     end
-
-    # def edit
-    #   find_snippet
-    # end
-    #
-    # def update
-    #   find_snippet
-    #   @snippet = Snippet.update(snippet_params)
-    # end
-    #
-    # def delete
-    #   find_snippet
-    #   @snippet.destroy
-    #   @snippets = Snippets.all
-    # end
 
     private
 
