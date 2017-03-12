@@ -12,8 +12,27 @@ module Api::V1
     end
 
     def create
-      @user = User.create(user_params)
+      user = User.new(user_params)
+      if params[:password] == params[:password_confirmation]
+      user.password = params[:password]
+
+      if user.save
+        jwt = Auth.issue({user: user.id})
+        render json: {jwt: jwt}
+      else
+        render json: {:errors=>
+         [{:detail=>"incorrect email or password",
+           :source=>{:pointer=>"user/err_type"}}
+         ]}, status: 404
+      end
+
+    else
+      render json: {:errors=>
+       [{:detail=>"incorrect email or password",
+         :source=>{:pointer=>"user/err_type"}}
+       ]}, status: 404
     end
+  end
 
     def show
       render json: find_user

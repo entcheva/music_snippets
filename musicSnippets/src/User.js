@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { createUser } from './actions/index'
+import { connect } from './actions/index'
 
-export default class User extends Component {
+class User extends Component {
 
   constructor() {
     super();
@@ -14,11 +16,9 @@ export default class User extends Component {
     let email = this.refs.email.value;
     let password = this.refs.password.value;
     let passwordConfirmation = this.refs.passwordConfirmation.value;
+    const user = { username: username, email: email, password: password, password_confirmation: passwordConfirmation };
 
-    // if (username !== "" && email !== "" && password !== "" && passwordConfirmation !== "") {
-    //   let user = { username: username, email: email, password: password, password_confirmation: passwordConfirmation };
-    //   this.props.createUser(user);
-    // }
+    this.props.createUser(user);
   }
 
   handleLogIn() {
@@ -65,4 +65,12 @@ export default class User extends Component {
       </div>
     );
   }
-}
+};
+
+// mapDispatchToProps(dispatch) {
+//   return {
+//     bindActionCreators( {createUser}, dispatch);
+//   }
+// }
+//
+// export default connect(null, mapDispatchToProps)(User);

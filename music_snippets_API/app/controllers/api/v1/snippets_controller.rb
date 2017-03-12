@@ -44,7 +44,7 @@ module Api::V1
     private
 
     def snippet_params
-      params.require(:snippets).permit(:name, :artist, :notes, :date, :user_id)
+      params.require(:snippets).permit(:name, :artist, :notes, :user_id)
     end
 
     def find_snippet
