@@ -1,19 +1,25 @@
 <script src="./assets/javascripts/vextab-div.js"></script>
 
-<h1>Welcome to the music-snippets dashboard!</h1>
-<h2>See all user-generated music snippets:</h2>
+<div>
+  <h1>Welcome to the music-snippets dashboard!</h1>
+  <%= link_to "Save a snippet", new_snippet_path %>
+  <h2>All user-generated music snippets:</h2>
+</div>
 
-<% @all_snippets.each do |snippet| %>
-  <%= pp(snippet) %><br/><br/>
-  <div class="vex-tabdiv"
-      width=680 scale=1.0 editor="false"
-      editor_width=680 editor_height=330>options space=20
-      tabstave
-      notation=true
-      key=A time=4/4
-      notes :q =|: (5/2.5/3.7/4) :8 7-5h6/3 ^3^ 5h6-7/5 ^3^ :q 7V/4 |
-      notes :8 t12p7/4 s5s3/4 :8 3s:16:5-7/5 :h p5/4
-      text :w, |#segno, ,|, :hd, , #tr
-      options space=25
-  </div>
-<% end %>
+<div>
+  <% @all_snippets.each do |snippet| %>
+    <h3>heading</h3>
+    <%= pp(snippet) %><br/><br/>
+    <div class="vex-tabdiv"
+        width=680 scale=1.0 editor="false"
+        editor_width=680 editor_height=330>options space=20
+        tabstave
+        notation=true
+        key=A time=4/4
+        notes :q =|: (5/2.5/3.7/4) :8 7-5h6/3 ^3^ 5h6-7/5 ^3^ :q 7V/4 |
+        notes :8 t12p7/4 s5s3/4 :8 3s:16:5-7/5 :h p5/4
+        text :w, |#segno, ,|, :hd, , #tr
+        options space=25
+    </div>
+  <% end %>
+</div>

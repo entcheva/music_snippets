@@ -11,7 +11,7 @@ class UsersController < ApplicationController
         session[:current_user_id] = @user.id
       redirect_to dashboard_path
       else
-        redirect_to login_path
+        redirect_to signup_path
       end
     end
 
