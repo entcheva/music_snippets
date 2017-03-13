@@ -3,25 +3,15 @@
   <head>
     <title>MusicSnippets</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
 
-    <div id='nav'>
+    <%= render "layouts/header" %>
+    <%=yield %>
+    <%= render "layouts/footer" %>
 
-      <div id='current-user-options'>
-        <% if current_user %>
-          Hi, <%= current_user.username %> | <%= link_to "Logout", '/logout' %>
-        <% else %>
-          <%= link_to 'Log In', '/login' %> | <%= link_to 'Sign Up', '/signup' %>
-        <% end %>
-    </div>
-
-    </div>
-
-    <%= yield %>
   </body>
 </html>

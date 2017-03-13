@@ -18,6 +18,7 @@ $neat-grid: (
 body {
   font-family: $serif-type;
   font-size: .9em;
+  background-color: $lightgreen-opacity;
   margin: 0;
   padding: 0;
   @include grid-visual;
@@ -48,4 +49,15 @@ a:hover {
   a {
     color: $lightgreen;
   }
+}
+
+#footer {
+  position:absolute;
+  bottom:0;
+  width:100%;
+  @include grid-column(6);
+  @include grid-shift(3);
+  text-align: center;
+  float: clear;
+  margin: 20px 0;
 }

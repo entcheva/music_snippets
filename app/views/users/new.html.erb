@@ -1,6 +1,8 @@
-<h1>Sign Up</h1>
+<div class='user-forms'>
 
-<%= form_for @user do |f| %>
+  <h1>Sign Up:</h1>
+
+  <%= form_for @user, html: {id: :signup } do |f|%>
   <%= f.label :username %>
   <%= f.text_field :username %><br/>
   <%= f.label :email %>
@@ -10,4 +12,6 @@
   <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation %><br/>
   <%= f.submit "Sign Up" %>
-<% end %>
+  <% end %>
+
+</div>

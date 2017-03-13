@@ -1,0 +1,7 @@
+.user-forms {
+  @include grid-column(6);
+  @include grid-shift(3);
+  margin: 40px 0;
+  text-align: center;
+  float: clear;
+}
