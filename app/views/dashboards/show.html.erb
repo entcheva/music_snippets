@@ -1,6 +1,6 @@
 <script src="./assets/javascripts/vextab-div.js"></script>
 
-<div id='dashboard'>
+<div id='dashboard-header'>
   <h1>Welcome to the Music Snippets dashboard!</h1>
   <%= link_to "Save a snippet", new_snippet_path %>
   <h2>🎹 Latest music snippets: 🎸</h2>
@@ -10,9 +10,9 @@
 
 <div class='snippet'>
   <% @all_snippets.each_with_index do |snippet, i| %>
-    <h3><%= snippet.name %>, by <%= snippet.artist %></h3>
-    <p>Notes: <%= snippet.notes %></p>
-    <p>Saved by: <%= snippet.user.username %></p>
+    <h3 class='snippet-info'><%= snippet.name %>, by <%= snippet.artist %></h3>
+    <p class='saved-by'>Saved by: <%= snippet.user.username %></p>
+    <h3 class='snippet-info'>Notes: <%= snippet.notes %></h3>
     <br/><br/>
     <div class="vex-tabdiv"
         width=680 scale=1.0 editor="false"
