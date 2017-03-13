@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
       redirect_to dashboard_path
     else
       @user = User.new
+      redirect_to dashboard_path
     end
   end
 

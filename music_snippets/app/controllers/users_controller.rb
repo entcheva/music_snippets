@@ -11,13 +11,11 @@ class UsersController < ApplicationController
         session[:current_user_id] = @user.id
       redirect_to dashboard_path
       else
-        flash[:notice] = "Invalid username or password."
         redirect_to login_path
       end
     end
 
     def show
-      @user = User.find(params[:id])
     end
 
     private

@@ -1,8 +1,10 @@
 class DashboardsController < ApplicationController
 
+  def index
+  end
+
   def show
-    @my_snippets = get_my_snippets_SQL
-    # binding.pry
+    @all_snippets = get_all_snippets_SQL
   end
 
   private
@@ -11,7 +13,7 @@ class DashboardsController < ApplicationController
     @current_user = User.find_by_id(session[:current_user_id])
   end
 
-  def get_my_snippets_SQL
+  def get_all_snippets_SQL
     query = <<-SQL
     SELECT *
     FROM snippets
