@@ -6,10 +6,9 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
 
-  resources :snippets, only: [:new, :create, :show]
+  resources :snippets, only: [:new, :create]
 
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
-  # resources :users, only: [ :show]
 
 end

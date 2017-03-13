@@ -8,6 +8,6 @@
   <%= f.label :notes %>
   <%= f.text_field :notes %><br/>
   <%= f.label :user_id %>
-  <%= f.text_field :user_id, value: 1 %><br/>
+  <%= f.text_field :user_id, value: current_user.id %><br/>
   <%= f.submit "Save Snippet" %>
 <% end %>

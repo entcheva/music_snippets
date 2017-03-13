@@ -1,26 +1,20 @@
 class SnippetsController < ApplicationController
 
-    def new
-      @snippet = Snippet.new
-    end
-
-    def create
-      @snippet = Snippet.update(snippet_params)
-      redirect_to dashboard_path
-    end
-
-    def show
-      find_snippet
-    end
-
-    private
-
-    def snippet_params
-      params.require(:snippet).permit(:name, :artist, :notes, :user_id)
-    end
-
-    def find_snippet
-      @snippet = Snippet.find(params[:id])
-    end
-
+  def new
+    @snippet = Snippet.new
   end
+
+  def create
+    @snippet = Snippet.create(snippet_params)
+    @snippet.user = current_user
+    redirect_to dashboard_path
+  end
+
+
+  private
+
+  def snippet_params
+    params.require(:snippet).permit(:name, :artist, :notes, :user_id)
+  end
+
+end

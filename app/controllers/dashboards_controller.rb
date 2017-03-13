@@ -1,11 +1,11 @@
 class DashboardsController < ApplicationController
 
   def index
+    @user = current_user
   end
 
   def show
-    @all_snippets = Dashboard.get_all_snippets_SQL
-    # binding.pry
+    @all_snippets = Snippet.all.reverse
   end
 
 end
