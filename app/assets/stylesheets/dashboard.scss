@@ -11,3 +11,13 @@
   @include grid-shift(3);
   float: clear;
 }
+
+#dashboard {
+  @include grid-column(12);
+  text-align: center;
+}
+
+.snippet {
+  @include grid-column(12);
+  text-align: center;
+}

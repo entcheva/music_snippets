@@ -5,6 +5,7 @@ class DashboardsController < ApplicationController
 
   def show
     @all_snippets = Dashboard.get_all_snippets_SQL
+    # binding.pry
   end
 
 end

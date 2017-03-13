@@ -1,15 +1,16 @@
 <script src="./assets/javascripts/vextab-div.js"></script>
 
-<div>
+<div id='dashboard'>
   <h1>Welcome to the Music Snippets dashboard!</h1>
   <%= link_to "Save a snippet", new_snippet_path %>
-  <h2>Latest saved music snippets:</h2>
+  <h2>🎹 Latest music snippets: 🎸</h2>
 </div>
 
-<div>
-  <% @all_snippets.each do |snippet| %>
-    <h3>heading</h3>
-    <%= pp(snippet) %><br/><br/>
+<div class='snippet'>
+  <%= @all_snippets.each_with_index do |snippet, i| %>
+    <h3><%= @all_snippets[i].values[1] %>, by <%= @all_snippets[i].values[2] %></h3>
+    <%= pp snippet %>
+    <br/><br/>
     <div class="vex-tabdiv"
         width=680 scale=1.0 editor="false"
         editor_width=680 editor_height=330>options space=20

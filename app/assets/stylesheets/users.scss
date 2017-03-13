@@ -1,6 +1,5 @@
 .user-forms {
-  @include grid-column(6);
-  @include grid-shift(3);
+  @include grid-column(12);
   margin: 40px 0;
   text-align: center;
   float: clear;

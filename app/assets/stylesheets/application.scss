@@ -1,6 +1,4 @@
-/*
- *= require_self
- */
+/*= require_self */
 
 @import 'bourbon/bourbon';
 @import 'neat/neat';
@@ -21,7 +19,7 @@ body {
   background-color: $lightgreen-opacity;
   margin: 0;
   padding: 0;
-  @include grid-visual;
+  // @include grid-visual;
 }
 
 a {
@@ -60,4 +58,5 @@ a:hover {
   text-align: center;
   float: clear;
   margin: 20px 0;
+  height: 40px;
 }
