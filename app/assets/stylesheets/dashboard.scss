@@ -1,3 +1,15 @@
 body {
   background-color: $lightgreen-opacity;
 }
+
+#intro {
+  @include grid-column(6);
+  @include grid-shift(3);
+  margin: 40px 0 100px 0;
+  text-align: center;
+  float: clear;
+
+}
+
+#intro-sample {
+}

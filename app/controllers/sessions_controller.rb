@@ -1,26 +1,21 @@
 class SessionsController < ApplicationController
 
   def new
-    if logged_in?
-      redirect_to dashboard_path
-    else
-      @user = User.new
-      redirect_to signup_path
-    end
+    @user = User.new
   end
 
   def create
-    binding.pry
+    @user = User.find_by_email(params[:email])
     if @user && @user.authenticate(params[:password])
-      session[:current_user_id] = @user.id
-      redirect_to dashboard_path
+      session[:user_id] = @user.id
+      redirect_to dashboard_path, :notice => 'Logged in successfully'
     else
-      redirect_to signup_path
+      redirect_to signup_path, :notice => 'Naw dawg'
     end
   end
 
   def destroy
-    session.clear
+    session[:user_id] = nil
     redirect_to signup_path
   end
 

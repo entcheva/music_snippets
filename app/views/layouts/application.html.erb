@@ -9,6 +9,19 @@
   </head>
 
   <body>
+
+    <div id='nav'>
+
+      <div id='current-user-options'>
+        <% if current_user %>
+          Hi, <%= current_user.username %> | <%= link_to "Logout", '/logout' %>
+        <% else %>
+          <%= link_to 'Log In', '/login' %> | <%= link_to 'Sign Up', '/signup' %>
+        <% end %>
+    </div>
+
+    </div>
+
     <%= yield %>
   </body>
 </html>

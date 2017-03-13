@@ -1,15 +1,4 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
  *= require_self
  */
 
@@ -23,20 +12,40 @@
 
 $neat-grid: (
   columns: 12,
-  gutter: 20px,
+  gutter: 10px,
 );
 
 body {
   font-family: $serif-type;
   font-size: .9em;
-  @include grid-column(12);
+  margin: 0;
+  padding: 0;
+  @include grid-visual;
 }
 
 a {
-   color: #444;
+   color: $midgrey;
  }
 
 a:hover {
   color: $lightblue;
   transition: color .3s;
+}
+
+#nav {
+  background-color: black;
+  margin: 0;
+  padding: 0;
+  height: 40px;
+  width: 100%;
+}
+
+#current-user-options {
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+
+  a {
+    color: $lightgreen;
+  }
 }

@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
   root to: 'dashboards#index', via: :get
   resource :dashboard, only: [:show]
-  resources :sessions, only: [:new, :create, :destroy]
-  resources :snippets, only: [:index, :new, :create, :show]
-  resources :users, only: [:create, :show]
-  get '/users/new', to: "users#new", as: 'signup'
+
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  get '/logout', to: 'sessions#destroy'
+
+  resources :snippets, only: [:new, :create, :show]
+
+  get '/signup' => 'users#new'
+  post '/users' => 'users#create'
+  # resources :users, only: [ :show]
+
 end
