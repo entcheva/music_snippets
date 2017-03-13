@@ -47,6 +47,11 @@ a:hover {
   a {
     color: $lightgreen;
   }
+
+  a:hover {
+    color: $lightblue;
+    transition: color .3s;
+  }
 }
 
 #footer {
