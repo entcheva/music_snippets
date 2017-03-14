@@ -8,9 +8,9 @@ class SessionsController < ApplicationController
     @user = User.find_by_email(params[:email])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect_to dashboard_path, :notice => 'Logged in successfully'
+      redirect_to dashboard_path
     else
-      redirect_to signup_path, :notice => 'Naw dawg'
+      redirect_to signup_path
     end
   end
 

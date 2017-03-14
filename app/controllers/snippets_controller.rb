@@ -5,8 +5,10 @@ class SnippetsController < ApplicationController
   end
 
   def create
-    @snippet = Snippet.create(snippet_params)
-    @snippet.user = current_user
+    @snippet = Snippet.new(snippet_params)
+    @snippet.user_id = current_user.id
+    # binding.pry
+    @snippet.save
     redirect_to dashboard_path
   end
 
@@ -14,7 +16,7 @@ class SnippetsController < ApplicationController
   private
 
   def snippet_params
-    params.require(:snippet).permit(:name, :artist, :notes, :user_id)
+    params.require(:snippet).permit(:name, :artist, :notes)
   end
 
 end
