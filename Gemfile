@@ -5,33 +5,35 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails', '~> 5.0.2'
-gem 'pg', '~> 0.18'
-gem 'puma', '~> 3.0'
+gem 'rails'
+gem 'pg'
+gem 'puma'
 gem 'jquery-rails'
-gem 'turbolinks', '~> 5'
-gem 'bcrypt', '~> 3.1.7'
+gem 'turbolinks'
+gem 'bcrypt'
 
 group :assets do
-  gem 'sass-rails', '~> 5.0'
-  gem 'uglifier', '>= 1.3.0'
-  gem 'coffee-rails', '~> 4.2'
+  gem 'sass-rails'
+  gem 'uglifier'
+  gem 'coffee-rails'
   gem 'bourbon'
   gem 'neat'
 end
 
 group :development, :test do
-  gem 'byebug', platform: :mri
+  gem 'byebug'
   gem 'pry'
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'shoulda', '~> 3.5'
+  gem 'shoulda-matchers', '~> 2.0'
 end
 
 group :development do
-  gem 'web-console', '>= 3.3.0'
-  gem 'listen', '~> 3.0.5'
+  gem 'web-console'
+  gem 'listen'
   gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring-watcher-listen'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

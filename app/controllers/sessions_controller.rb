@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-
   def new
     @user = User.new
   end
@@ -18,5 +17,4 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     redirect_to signup_path
   end
-
 end

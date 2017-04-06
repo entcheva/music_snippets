@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 5) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "dashboard", force: :cascade do |t|
+  create_table "dashboards", force: :cascade do |t|
     t.integer "user_id"
   end
 
