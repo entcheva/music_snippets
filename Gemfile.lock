@@ -67,6 +67,8 @@ GEM
     diff-lcs (1.3)
     erubis (2.7.0)
     execjs (2.7.0)
+    factory_girl (4.8.0)
+      activesupport (>= 3.0.0)
     ffi (1.9.18)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
@@ -161,6 +163,9 @@ GEM
     shoulda-context (1.2.2)
     shoulda-matchers (2.8.0)
       activesupport (>= 3.0.0)
+    simple_form (3.4.0)
+      actionpack (> 4, < 5.1)
+      activemodel (> 4, < 5.1)
     slop (3.6.0)
     spring (2.0.1)
       activesupport (>= 4.2)
@@ -204,6 +209,7 @@ DEPENDENCIES
   byebug
   capybara
   coffee-rails
+  factory_girl
   jquery-rails
   listen
   neat
@@ -215,10 +221,10 @@ DEPENDENCIES
   sass-rails
   shoulda (~> 3.5)
   shoulda-matchers (~> 2.0)
+  simple_form
   spring
   spring-watcher-listen
   turbolinks
-  tzinfo-data
   uglifier
   web-console
 
