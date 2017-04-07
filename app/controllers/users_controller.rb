@@ -9,7 +9,8 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to dashboard_path
     else
-      redirect_to signup_path
+      flash[:notice] = "Sign Up unsuccessful. Please try again."
+      redirect_to new_user_path
     end
   end
 
