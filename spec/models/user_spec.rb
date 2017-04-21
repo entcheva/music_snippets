@@ -1,4 +1,5 @@
 require "rails_helper"
+require "spec_helper"
 
 RSpec.describe User do
   describe "associations" do
@@ -7,22 +8,21 @@ RSpec.describe User do
   end
 
   describe "has secure password" do
-    user = User.create(username: "spacedude440", email: "spacedude440@gmail.com")
-
     it { is_expected.to have_secure_password }
   end
 
   describe "is valid" do
     it "has a username" do
-      user = User.create(username: "spacedude440", email: "spacedude440@gmail.com")
+      user = FactoryGirl.build_stubbed(:user)
 
-      expect(user.username).to eq "spacedude440"
+
+      expect(user.username).to eq "stardude440"
     end
 
     it "has an email" do
-      user = User.create(username: "spacedude440", email: "spacedude440@gmail.com")
+      user = FactoryGirl.build_stubbed(:user)
 
-      expect(user.email).to eq "spacedude440@gmail.com"
+      expect(user.email).to eq "stardude440@gmail.com"
     end
   end
 end

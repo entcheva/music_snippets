@@ -7,26 +7,26 @@ RSpec.describe Snippet do
 
   describe "is valid" do
     it "has a name" do
-      snippet = Snippet.new(name: "Lazuli", artist: "Beach House", notes: "C, E, D, G", user_id: 1)
+      snippet = FactoryGirl.build_stubbed(:snippet)
 
       expect(snippet.name).to eq "Lazuli"
     end
 
     it "has an artist" do
-      snippet = Snippet.new(name: "Hey Jude", artist: "The Beatles", notes: "Bm, D, G, Em", user_id: 2)
+      snippet = FactoryGirl.build_stubbed(:snippet)
 
-      expect(snippet.artist).to eq "The Beatles"
+      expect(snippet.artist).to eq "Beach House"
     end
 
     it "has notes" do
-      snippet = Snippet.new(name: "Hey Jude", artist: "The Beatles", notes: "Bm, D, G, Em" , user_id: 2)
+      snippet = FactoryGirl.build_stubbed(:snippet)
 
-      expect(snippet.notes).to eq "Bm, D, G, Em"
+      expect(snippet.notes).to eq "A, D, C, G"
     end
 
     it "has a user_id" do
-      user = User.new(id: 2, username: "spacedude440", email: "spacedude440@gmail.com")
-      snippet = Snippet.new(name: "Hey Jude", artist: "The Beatles", notes: "Bm, D, G, Em")
+      user = FactoryGirl.build_stubbed(:user)
+      snippet = FactoryGirl.build_stubbed(:snippet) 
       snippet.user_id = user.id
 
       expect(snippet.user_id).to eq 2
