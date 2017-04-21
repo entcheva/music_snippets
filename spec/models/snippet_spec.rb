@@ -15,13 +15,13 @@ RSpec.describe Snippet do
     it "has an artist" do
       snippet = FactoryGirl.build_stubbed(:snippet)
 
-      expect(snippet.artist).to eq "The Beatles"
+      expect(snippet.artist).to eq "Beach House"
     end
 
     it "has notes" do
       snippet = FactoryGirl.build_stubbed(:snippet)
 
-      expect(snippet.notes).to eq "Bm, D, G, Em"
+      expect(snippet.notes).to eq "A, D, C, G"
     end
 
     it "has a user_id" do
