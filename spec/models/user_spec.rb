@@ -8,8 +8,6 @@ RSpec.describe User do
   end
 
   describe "has secure password" do
-    user = FactoryGirl.build_stubbed(:user)
-
     it { is_expected.to have_secure_password }
   end
 

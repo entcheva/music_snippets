@@ -1,13 +1,13 @@
 FactoryGirl.define do
   factory :user do
-    username "stardude440"
-    email "stardude440@gmail.com"
-    password_digest "password"
+    sequence(:username) { |n| "stardude#{440 + n}" }
+    sequence(:email) { |n| "stardude#{440 + n}@example.com" }
+    password "password"
   end
 
   factory :snippet do
     name "Lazuli"
     artist "Beach House"
-    notes:"A, D, C, G"
+    notes "A, D, C, G"
   end
 end
