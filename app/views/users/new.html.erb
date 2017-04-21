@@ -1,18 +1,15 @@
-<div class='user-forms'>
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
 
+  <div class='user-form'>
   <h1>🎹 Music Snippets 🎸</h1>
   <h2>Sign Up:</h2>
-
-  <%= form_for @user, html: {id: :signup } do |f|%>
-  <%= f.label :username %>
-  <%= f.text_field :username %><br/>
-  <%= f.label :email %>
-  <%= f.email_field :email %><br/>
-  <%= f.label :password %>
-  <%= f.password_field :password %><br/>
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %><br/>
-  <%= f.submit "Sign Up" %>
+  <%= simple_form_for :user, url: users_path do |f| %>
+  <%= f.input :username %>
+  <%= f.input :email %>
+  <%= f.input :password %>
+  <%= f.input :password_confirmation %>
+  <%= f.button :submit %>
   <% end %>
-
 </div>

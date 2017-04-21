@@ -25,6 +25,7 @@ group :development, :test do
   gem 'byebug'
   gem 'capybara'
   gem 'factory_girl'
+  gem 'launchy'
   gem 'pry'
   gem 'rspec-rails'
   gem 'shoulda', '~> 3.5'

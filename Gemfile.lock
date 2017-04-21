@@ -260,6 +260,7 @@ DEPENDENCIES
   coffee-rails
   factory_girl
   jquery-rails
+  launchy
   listen
   neat
   pg
