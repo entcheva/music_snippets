@@ -1,22 +1,30 @@
-class UsersController < ApplicationController
-  def new
-    @user = User.new
-  end
+class UsersController < Clearance::UsersController
 
   def create
-    @user = User.new(user_params)
+    @user = user_from_params
     if @user.save
-      session[:user_id] = @user.id
-      redirect_to dashboard_path
+      sign_in @user
+      redirect_to dashboard_path, notice: "Sign up successful! You rock."
     else
-      flash[:notice] = "Sign Up unsuccessful. Please try again."
-      redirect_to new_user_path
+      redirect_to sign_up_path, notice: "Sign up unsuccessful. Please try again."
     end
   end
 
   private
 
+  def user_from_params
+    email = user_params.delete(:email)
+    username = user_params.delete(:username)
+    password = user_params.delete(:password)
+
+    Clearance.configuration.user_model.new.tap do |user|
+      user.email = email
+      user.username = username
+      user.password = password
+    end
+  end
+
   def user_params
-    params.require(:user).permit(:username, :email, :password, :password_confirmation)
+    params.fetch(Clearance.configuration.user_parameter, Hash.new)
   end
 end
