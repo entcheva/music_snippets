@@ -1,16 +1,28 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>MusicSnippets</title>
-    <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<head>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tag %>
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload" %>
+  <title>music_snippets</title>
+</head>
+<body>
+  <div id="nav">
+    <div id="current-user-options">
+      <% if signed_in? -%>
+        Hi, <%= current_user.username %> | <%= button_to t(".sign_out"), sign_out_path, method: :delete %>
+      <% else -%>
+        <%= link_to t(".sign_in"), sign_in_path %>
+      <% end -%>
+    </div>
+  </div>
 
-  <body>
+  <div id="flash">
+    <% flash.each do |key, value| -%>
+      <div id="flash_<%= key %>"><%=h value %></div>
+    <% end %>
+  </div>
 
-    <%= render "layouts/header" %>
-    <%=yield %>
-
-  </body>
+  <%= yield %>
+</body>
 </html>

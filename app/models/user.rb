@@ -1,7 +1,9 @@
 class User < ApplicationRecord
-  has_secure_password
+  include Clearance::User
+
   has_many :snippets
   has_one :dashboard
-  validates :username, :email, uniqueness: true
+
+  validates :email, :username, uniqueness: true
   validates :password, presence: true, on: :create
 end

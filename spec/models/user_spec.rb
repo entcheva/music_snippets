@@ -7,22 +7,13 @@ RSpec.describe User do
     it { is_expected.to have_one(:dashboard) }
   end
 
-  describe "has secure password" do
-    it { is_expected.to have_secure_password }
-  end
-
   describe "is valid" do
-    it "has a username" do
-      user = FactoryGirl.build_stubbed(:user)
-
-
-      expect(user.username).to eq "stardude440"
+    it "has a unique username" do
+      validate_uniqueness_of(:username)
     end
 
-    it "has an email" do
-      user = FactoryGirl.build_stubbed(:user)
-
-      expect(user.email).to eq "stardude440@gmail.com"
+    it "has a unique email" do
+      validate_uniqueness_of(:email)
     end
   end
 end
