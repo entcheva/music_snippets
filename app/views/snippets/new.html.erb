@@ -1,11 +1,8 @@
 <h1>Save a new music snippet:</h1>
 
-<%= form_for @snippet do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %><br/>
-  <%= f.label :artist %>
-  <%= f.text_field :artist %><br/>
-  <%= f.label :notes %>
-  <%= f.text_field :notes %><br/>
-  <%= f.submit "Save Snippet" %>
+<%= simple_form_for @snippet do |f| %>
+  <%= f.input :name %>
+  <%= f.input :artist %>
+  <%= f.input :notes %>
+  <%= f.button :submit %>
 <% end %>
