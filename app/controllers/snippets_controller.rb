@@ -6,8 +6,11 @@ class SnippetsController < ApplicationController
   def create
     @snippet = Snippet.new(snippet_params)
     @snippet.user_id = current_user.id
-    @snippet.save
-    redirect_to dashboard_path
+    if @snippet.save
+      redirect_to dashboard_path
+    else
+      redirect_to new_snippet_path, notice: @snippet.errors.messages
+    end
   end
 
   private
