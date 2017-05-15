@@ -4,30 +4,27 @@ require "spec_helper"
 RSpec.feature "User creates snippet" do
   scenario "successfully" do
     user = FactoryGirl.create(:user)
-    sign_up_with(user)
+    name = "Song title"
+    artist = "Artist name"
+    notes = "A, D, C, G"
 
     visit new_snippet_path(as: user)
-    within "form" do
-      fill_in "Name", with: "Song title"
-      fill_in "Artist", with: "Artist name"
-      fill_in "Notes", with: "A, D, C, G"
-      click_button "Create Snippet"
-    end
+    fill_in "Name", with: name
+    fill_in "Artist", with: artist
+    fill_in "Notes", with: "A, D, C, G"
+    click_button "Create Snippet"
 
-    expect(page).to have_text "Song title"
-    expect(page).to have_text "Artist name"
-    expect(page).to have_text "A, D, C, G"
-    expect(page).to have text "Saved by: #{user.username}"
+    expect(page).to have_text "#{name}, by #{artist}"
+    expect(page).to have_text notes
+    expect(page).to have_text "Saved by: #{user.username}"
   end
 
   scenario "unsuccessfully" do
-  end
+    user = FactoryGirl.create(:user)
 
-  def sign_up_with(user)
-    visit sign_up_path
-    fill_in "Email", with: user.email
-    fill_in "Username", with: user.username
-    fill_in "Password", with: user.password
-    click_button "Sign up"
+    visit new_snippet_path(as: user)
+    click_button "Create Snippet"
+
+    expect(page).to have_text "Please fill out all fields."
   end
 end
