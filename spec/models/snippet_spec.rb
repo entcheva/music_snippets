@@ -7,8 +7,8 @@ RSpec.describe Snippet do
   end
 
   describe "validations" do
-    it { is_expected.to validate_presence_of :name }
     it { is_expected.to validate_presence_of :artist }
+    it { is_expected.to validate_presence_of :title }
     it { is_expected.to validate_presence_of :notes }
   end
 end
