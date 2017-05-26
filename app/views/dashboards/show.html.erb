@@ -10,7 +10,7 @@
 
 <div class='snippet'>
   <% @all_snippets.each_with_index do |snippet, i| %>
-    <h3 class='snippet-info'><%= snippet.name %>, by <%= snippet.artist %></h3>
+    <h3 class='snippet-info'><%= snippet.title %>, by <%= snippet.artist %></h3>
     <p class='saved-by'>Saved by: <%= snippet.user.username %></p>
     <h3 class='snippet-info'>Notes: <%= snippet.notes %></h3>
     <br/><br/>

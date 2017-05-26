@@ -16,6 +16,6 @@ class SnippetsController < ApplicationController
   private
 
   def snippet_params
-    params.require(:snippet).permit(:name, :artist, :notes)
+    params.require(:snippet).permit(:artist, :title, :notes)
   end
 end
