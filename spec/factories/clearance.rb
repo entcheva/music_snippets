@@ -12,4 +12,10 @@ FactoryGirl.define do
     username
     password "password"
   end
+
+  factory :snippet do
+    artist "Beach House"
+    title "Lazuli"
+    notes "A, B, D, F"
+  end
 end

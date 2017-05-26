@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170509171615) do
+ActiveRecord::Schema.define(version: 20170526155136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20170509171615) do
   end
 
   create_table "snippets", force: :cascade do |t|
-    t.string  "name"
+    t.string  "title"
     t.string  "artist"
     t.string  "notes",   default: ""
     t.integer "user_id"

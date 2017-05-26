@@ -1,8 +1,8 @@
 <h1>Save a new music snippet:</h1>
 
 <%= simple_form_for @snippet do |f| %>
-  <%= f.input :name %><br/>
   <%= f.input :artist %><br/>
+  <%= f.input :title %><br/>
   <%= f.input :notes %><br/>
   <%= f.button :submit %>
 <% end %>
