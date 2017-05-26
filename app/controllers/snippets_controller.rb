@@ -13,6 +13,20 @@ class SnippetsController < ApplicationController
     end
   end
 
+  def edit
+    @snippet = current_user.snippets.find(params[:id])
+  end
+
+  def update
+    @snippet = current_user.snippets.find(params[:id])
+
+    if @snippet.update(snippet_params)
+      redirect_to dashboard_path
+    else
+      render :edit
+    end
+  end
+
   private
 
   def snippet_params

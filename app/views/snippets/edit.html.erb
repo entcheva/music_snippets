@@ -1,1 +1,8 @@
-hi from snippets edit
+<h1>Update your music snippet:</h1>
+
+<%= simple_form_for @snippet, method: "patch" do |f| %>
+  <%= f.input :artist %>
+  <%= f.input :title %>
+  <%= f.input :notes %>
+  <%= f.button :submit %>
+<% end %>
