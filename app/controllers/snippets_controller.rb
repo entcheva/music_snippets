@@ -27,6 +27,13 @@ class SnippetsController < ApplicationController
     end
   end
 
+  def destroy
+    @snippet = current_user.snippets.find(params[:id])
+    @snippet.destroy!
+    flash[:notice] = "Your snippet has been deleted."
+    redirect_to dashboard_path
+  end
+
   private
 
   def snippet_params
