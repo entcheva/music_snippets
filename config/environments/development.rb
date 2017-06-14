@@ -54,4 +54,7 @@ Rails.application.configure do
 
   # Clearance
   config.action_mailer.default_url_options = { host: "dev.locahost:3000" }
+
+  # Paperclip
+  Paperclip.options[:command_path] = "/usr/local/bin/"
 end
