@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170526155136) do
+ActiveRecord::Schema.define(version: 20170615201045) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "audio_files", force: :cascade do |t|
+    t.string   "artist"
+    t.string   "title"
+    t.string   "audio_file_name"
+    t.string   "audio_content_type"
+    t.integer  "audio_file_size"
+    t.datetime "audio_updated_at"
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_audio_files_on_user_id", using: :btree
+  end
 
   create_table "dashboards", force: :cascade do |t|
     t.integer "user_id"
@@ -36,4 +47,14 @@ ActiveRecord::Schema.define(version: 20170526155136) do
     t.index ["remember_token"], name: "index_users_on_remember_token", using: :btree
   end
 
+  create_table "wishlists", force: :cascade do |t|
+    t.string  "artist"
+    t.string  "title"
+    t.string  "instrument"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_wishlists_on_user_id", using: :btree
+  end
+
+  add_foreign_key "audio_files", "users"
+  add_foreign_key "wishlists", "users"
 end

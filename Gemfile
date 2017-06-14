@@ -7,10 +7,12 @@ end
 
 gem "clearance"
 gem 'jquery-rails'
+gem "paperclip"
 gem 'pg'
 gem 'puma'
 gem 'rails'
 gem 'simple_form'
+gem "slim"
 gem 'turbolinks'
 
 group :assets do
