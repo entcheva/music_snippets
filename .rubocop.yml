@@ -1,4 +1,20 @@
+Documentation:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*
+    - db/**/*
+
+Style/EmptyLinesAroundBody:
+  Exclude:
+    - db/**/*
+
+Style/NumericLiterals:
+  Enabled: false
+
 Style/StringLiterals:
   EnforcedStyle: double_quotes
+
 Style/FrozenStringLiteralComment:
   Enabled: false

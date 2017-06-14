@@ -7,6 +7,7 @@ end
 
 gem "clearance"
 gem 'jquery-rails'
+gem "paperclip", "~> 5.0.0"
 gem 'pg'
 gem 'puma'
 gem 'rails'
