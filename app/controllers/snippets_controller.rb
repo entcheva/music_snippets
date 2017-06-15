@@ -4,12 +4,11 @@ class SnippetsController < ApplicationController
   end
 
   def create
-    @snippet = Snippet.new(snippet_params)
-    @snippet.user_id = current_user.id
+    @snippet = current_user.snippets.new(snippet_params)
     if @snippet.save
-      redirect_to dashboard_path
+      redirect_to dashboard_url
     else
-      redirect_to new_snippet_path, notice: @snippet.errors.messages
+      render :new
     end
   end
 
@@ -21,7 +20,7 @@ class SnippetsController < ApplicationController
     @snippet = current_user.snippets.find(params[:id])
 
     if @snippet.update(snippet_params)
-      redirect_to dashboard_path
+      redirect_to dashboard_url, notice: "Snippet created! You rock."
     else
       render :edit
     end
@@ -30,8 +29,7 @@ class SnippetsController < ApplicationController
   def destroy
     @snippet = current_user.snippets.find(params[:id])
     @snippet.destroy!
-    flash[:notice] = "Your snippet has been deleted."
-    redirect_to dashboard_path
+    redirect_to dashboard_url, notice: "Your snippet has been deleted."
   end
 
   private
