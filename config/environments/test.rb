@@ -43,4 +43,9 @@ Rails.application.configure do
   # Clearance
   config.action_mailer.default_url_options = { host: "test.locahost:3000" }
   config.middleware.use Clearance::BackDoor
+
+  # Paperclip
+  Paperclip::Attachment.default_options[:path] = (
+    "#{Rails.root}/public/system/:class/:id_partition/:style.:extension"
+  )
 end
