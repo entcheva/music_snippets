@@ -4,6 +4,6 @@ class DashboardsController < ApplicationController
   end
 
   def show
-    @all_snippets = Snippet.all.reverse
+    @activities = current_user.activities.order("created_at DESC")
   end
 end

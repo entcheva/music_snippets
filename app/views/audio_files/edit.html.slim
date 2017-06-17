@@ -1,0 +1,11 @@
+h1
+  = "Update your audio file:"
+
+= simple_form_for @audio_file, method: "patch" do |f|
+  = f.input :artist
+  = f.input :title
+  = f.input :audio
+  = f.button :submit
+
+= simple_form_for @audio_file, method: :delete do |f|
+  = f.button :submit, "Delete"

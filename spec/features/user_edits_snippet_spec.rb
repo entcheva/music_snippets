@@ -14,6 +14,7 @@ RSpec.feature "User edits snippet" do
     click_button "Update Snippet"
 
     expect(page).to have_content "#{snippet.title}, by #{new_artist}"
+    expect(page).to have_text "Snippet updated successfully."
   end
 
   scenario "unsuccessfully" do

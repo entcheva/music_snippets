@@ -15,15 +15,6 @@ RSpec.feature "User creates snippet" do
 
     expect(page).to have_text "#{title}, by #{artist}"
     expect(page).to have_text notes
-    expect(page).to have_text "Saved by: #{user.username}"
-  end
-
-  scenario "unsuccessfully" do
-    user = FactoryGirl.create(:user)
-
-    visit new_snippet_path(as: user)
-    click_button "Create Snippet"
-
-    expect(page).to have_text "can't be blank"
+    expect(page).to have_text "saved by: #{user.username}"
   end
 end

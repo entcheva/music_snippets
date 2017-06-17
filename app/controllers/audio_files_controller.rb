@@ -6,9 +6,24 @@ class AudioFilesController < ApplicationController
   def create
     @audio_file = current_user.audio_files.new(audio_file_params)
     if @audio_file.save
-      redirect_to dashboard_url, notice: "Audio file saved successfully"
+      record_activity(subject: @audio_file)
+      redirect_to dashboard_url, notice: "Audio file created! You rock."
     else
-      render :new
+      render :new, status: 400
+    end
+  end
+
+  def edit
+    @audio_file = current_user.audio_files.find(params[:id])
+  end
+
+  def update
+    @audio_file = current_user.audio_files.find(params[:id])
+    if @audio_file.update(audio_file_params)
+      record_activity(subject: @audio_file)
+      redirect_to dashboard_url, notice: "Audio file updated successfully."
+    else
+      render :edit, status: 400
     end
   end
 

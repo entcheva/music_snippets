@@ -1,0 +1,12 @@
+h1
+  = "Update your wishlist item:"
+
+= simple_form_for @wishlist, method: "patch" do |f|
+  = f.input :artist
+  = f.input :title
+  = f.input :instrument
+  = f.button :submit
+
+= simple_form_for @wishlist, method: :delete do |f|
+  = f.button :submit, "Delete"
+

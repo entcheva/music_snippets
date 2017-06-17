@@ -15,6 +15,6 @@ RSpec.feature "User creates audio file" do
     )
     click_button "Create Audio file"
 
-    expect(page).to have_content "Audio file saved successfully"
+    expect(page).to have_content "Audio file created! You rock."
   end
 end

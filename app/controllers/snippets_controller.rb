@@ -6,9 +6,10 @@ class SnippetsController < ApplicationController
   def create
     @snippet = current_user.snippets.new(snippet_params)
     if @snippet.save
-      redirect_to dashboard_url
+      record_activity(subject: @snippet)
+      redirect_to dashboard_url, notice: "Snippet created! You rock."
     else
-      render :new
+      render :new, status: 400
     end
   end
 
@@ -18,11 +19,11 @@ class SnippetsController < ApplicationController
 
   def update
     @snippet = current_user.snippets.find(params[:id])
-
     if @snippet.update(snippet_params)
-      redirect_to dashboard_url, notice: "Snippet created! You rock."
+      record_activity(subject: @snippet)
+      redirect_to dashboard_url, notice: "Snippet updated successfully."
     else
-      render :edit
+      render :edit, status: 400
     end
   end
 

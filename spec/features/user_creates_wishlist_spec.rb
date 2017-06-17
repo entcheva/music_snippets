@@ -12,6 +12,6 @@ RSpec.feature "User creates wishlist" do
     fill_in "Instrument", with: "Piano"
     click_button "Create Wishlist"
 
-    expect(page).to have_content "Success"
+    expect(page).to have_content "Wishlist item created! You rock."
   end
 end

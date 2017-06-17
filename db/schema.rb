@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170615202643) do
+ActiveRecord::Schema.define(version: 20170621143033) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activities", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "subject_id"
+    t.string   "subject_type"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["subject_id"], name: "index_activities_on_subject_id", using: :btree
+    t.index ["subject_type"], name: "index_activities_on_subject_type", using: :btree
+    t.index ["user_id"], name: "index_activities_on_user_id", using: :btree
+  end
 
   create_table "audio_files", force: :cascade do |t|
     t.string   "artist"
@@ -56,6 +67,7 @@ ActiveRecord::Schema.define(version: 20170615202643) do
     t.index ["user_id"], name: "index_wishlists_on_user_id", using: :btree
   end
 
+  add_foreign_key "activities", "users"
   add_foreign_key "audio_files", "users"
   add_foreign_key "snippets", "users"
   add_foreign_key "wishlists", "users"
