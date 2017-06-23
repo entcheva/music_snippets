@@ -15,6 +15,6 @@ RSpec.feature "User creates snippet" do
 
     expect(page).to have_text "#{title}, by #{artist}"
     expect(page).to have_text notes
-    expect(page).to have_text "saved by: #{user.username}"
+    expect(page).to have_text "created by: #{user.username}"
   end
 end

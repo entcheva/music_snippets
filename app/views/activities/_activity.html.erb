@@ -2,7 +2,7 @@
 <%= activity.subject.title %>, by <%= activity.subject.artist %></h3>
 
 <p class="saved-by">
-<%= activity.subject_type.underscore.humanize %> saved by: <%= activity.user.username %></p>
+<%= activity.subject_type.underscore.humanize %> <%= activity.status %> by: <%= activity.user.username %></p>
 
 <%= render activity.subject %>
 <h3 class="snippet-info"><%= activity.created_at.to_formatted_s %></h3>
