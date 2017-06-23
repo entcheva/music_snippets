@@ -6,10 +6,11 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def record_activity(subject:)
+  def record_activity(subject:, status:)
     Activity.create!(
       subject: subject,
       user: current_user,
+      status: status,
     )
   end
 end

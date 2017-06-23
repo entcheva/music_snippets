@@ -23,6 +23,7 @@ RSpec.describe AudioFilesController do
       expect(Activity).to have_received(:create!).with(
         subject: mock_audio_file,
         user: user,
+        status: "created",
       )
     end
   end

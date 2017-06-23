@@ -43,6 +43,7 @@ RSpec.describe WishlistsController do
         expect(Activity).to have_received(:create!).with(
           subject: mock_wishlist,
           user: user,
+          status: "created",
         )
       end
     end
@@ -128,6 +129,7 @@ RSpec.describe WishlistsController do
         expect(Activity).to have_received(:create!).with(
           subject: wishlist,
           user: user,
+          status: "updated",
         )
       end
     end

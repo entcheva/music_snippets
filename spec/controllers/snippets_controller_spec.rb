@@ -23,6 +23,7 @@ RSpec.describe SnippetsController do
       expect(Activity).to have_received(:create!).with(
         subject: mock_snippet,
         user: user,
+        status: "created",
       )
     end
   end
