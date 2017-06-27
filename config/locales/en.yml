@@ -21,3 +21,8 @@
 
 en:
   hello: "Hello world"
+  spotify:
+    suggestions:
+      message:
+        failure: "Uhoh, we couldn't fetch a suggestion. Try refreshing the page."
+        success: "Want to learn to play this song? Refresh for a new suggestion."

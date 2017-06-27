@@ -23,7 +23,7 @@ require 'capybara/rails'
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
-Dir[Rails.root.join("spec/support/**/*.rb")].each { |file| require file }
+Dir[Rails.root.join("spec/support/**/*.rb")].sort.each { |file| require file }
 
 ActiveRecord::Migration.maintain_test_schema!
 

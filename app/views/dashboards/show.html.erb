@@ -1,13 +1,72 @@
-<script src="./assets/javascripts/vextab-div.js"></script>
-
 <div id='dashboard-header'>
-  <h1>Welcome to the Music Snippets dashboard!</h1>
+  <h1 class="dashboard-title">Welcome to the Music Snippets dashboard!</h1>
   <%= link_to "Save a snippet", new_snippet_path %>
   <%= link_to "Save an audio file", new_audio_file_path %>
   <%= link_to "Save a wishlist item", new_wishlist_path %>
-  <h2>🎹 Latest music snippet activity: 🎸</h2>
 </div>
 
+<hr>
+<h1 class="dashboard-title">🎹🎸 Latest activity:</h1>
 <div class="snippet">
   <%= render @activities %>
+</div>
+
+<hr>
+<h1 class="dashboard-title">🎹🎸 Music suggestions:</h1>
+
+<script type="text/javascript">
+
+function getJobStatus(jobId) {
+  $.ajax({
+    url: "/suggestions_job_statuses/" + jobId,
+    type: "GET",
+    dataType: "json",
+    error: function(xhr, errorString, exceptionObj) {
+      console.log(errorString);
+      console.log(xhr);
+      console.log(exceptionObj);
+      console.log("so sad");
+    },
+    statusCode: {
+      202: function (data, status, xhr) {
+        setTimeout(getJobStatus, 1000, jobId);
+      },
+      201: function (data, status, xhr) {
+        $("#image").append("<img src='" + data.payload.image + "'/>");
+        $("#artist").append(data.payload.artist);
+        $("#track_title").append(data.payload.title);
+        $("#album").append(data.payload.album);
+        $("#message").append(data.message);
+      },
+    },
+    success: function(data, statusString, xhr){
+      console.log(data);
+      console.log(data.payload);
+      console.log(statusString);
+      console.log(xhr);
+      console.log(xhr.status);
+    },
+  });
+}
+
+var jobId = "<%= @job_status.id%>";
+getJobStatus(jobId);
+</script>
+
+<div class="snippet">
+  <div id="suggestion">
+
+    <div id="message"></div>
+
+    <div id="image"></div>
+
+    <p class="saved-by">Artist</p>
+    <h3 class="snippet-info"><div id="artist"></div></h3>
+
+    <p class="saved-by">Track</p>
+    <h3 class="snippet-info"><div id="track_title"></div></h3>
+
+    <p class="saved-by">Album</p>
+    <h3 class="snippet-info"><div id="album"></div></h3>
+  </div>
 </div>

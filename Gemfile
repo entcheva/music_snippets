@@ -5,12 +5,14 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem "capybara-webkit"
 gem "clearance"
 gem 'jquery-rails'
 gem "paperclip"
 gem 'pg'
 gem 'puma'
 gem 'rails'
+gem "rest-client"
 gem 'simple_form'
 gem "slim"
 gem 'turbolinks'
@@ -27,7 +29,10 @@ group :development, :test do
   gem 'byebug'
   gem 'capybara'
   gem 'database_cleaner'
+  gem "dotenv-rails"
   gem 'factory_girl_rails'
+  gem "json-schema"
+  gem "json_matchers"
   gem 'launchy'
   gem 'pry'
   gem "rails-controller-testing"

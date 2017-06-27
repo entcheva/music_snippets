@@ -10,62 +10,72 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170622221524) do
+ActiveRecord::Schema.define(version: 20170703182119) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
 
-  create_table "activities", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "subject_id"
-    t.string   "subject_type"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-    t.integer  "status",       default: 0, null: false
-    t.index ["subject_id"], name: "index_activities_on_subject_id", using: :btree
-    t.index ["subject_type"], name: "index_activities_on_subject_type", using: :btree
-    t.index ["user_id"], name: "index_activities_on_user_id", using: :btree
+  create_table "activities", id: :serial, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "subject_id"
+    t.string "subject_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "status", default: 0, null: false
+    t.index ["subject_id"], name: "index_activities_on_subject_id"
+    t.index ["subject_type"], name: "index_activities_on_subject_type"
+    t.index ["user_id"], name: "index_activities_on_user_id"
   end
 
-  create_table "audio_files", force: :cascade do |t|
-    t.string   "artist"
-    t.string   "title"
-    t.string   "audio_file_name"
-    t.string   "audio_content_type"
-    t.integer  "audio_file_size"
+  create_table "audio_files", id: :serial, force: :cascade do |t|
+    t.string "artist"
+    t.string "title"
+    t.string "audio_file_name"
+    t.string "audio_content_type"
+    t.integer "audio_file_size"
     t.datetime "audio_updated_at"
-    t.integer  "user_id"
-    t.index ["user_id"], name: "index_audio_files_on_user_id", using: :btree
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_audio_files_on_user_id"
   end
 
-  create_table "dashboards", force: :cascade do |t|
+  create_table "dashboards", id: :serial, force: :cascade do |t|
     t.integer "user_id"
   end
 
-  create_table "snippets", force: :cascade do |t|
-    t.string  "title"
-    t.string  "artist"
-    t.string  "notes",   default: ""
+  create_table "snippets", id: :serial, force: :cascade do |t|
+    t.string "title"
+    t.string "artist"
+    t.string "notes", default: ""
     t.integer "user_id"
-    t.index ["user_id"], name: "index_snippets_on_user_id", using: :btree
+    t.index ["user_id"], name: "index_snippets_on_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "suggestions_job_statuses", force: :cascade do |t|
+    t.string "message"
+    t.hstore "payload"
+    t.boolean "done", default: false, null: false
+    t.string "jobid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", id: :serial, force: :cascade do |t|
     t.string "username"
     t.string "email"
     t.string "encrypted_password", limit: 128
     t.string "confirmation_token", limit: 128
-    t.string "remember_token",     limit: 128
-    t.index ["email"], name: "index_users_on_email", using: :btree
-    t.index ["remember_token"], name: "index_users_on_remember_token", using: :btree
+    t.string "remember_token", limit: 128
+    t.index ["email"], name: "index_users_on_email"
+    t.index ["remember_token"], name: "index_users_on_remember_token"
   end
 
-  create_table "wishlists", force: :cascade do |t|
-    t.string  "artist"
-    t.string  "title"
-    t.string  "instrument"
+  create_table "wishlists", id: :serial, force: :cascade do |t|
+    t.string "artist"
+    t.string "title"
+    t.string "instrument"
     t.integer "user_id"
-    t.index ["user_id"], name: "index_wishlists_on_user_id", using: :btree
+    t.index ["user_id"], name: "index_wishlists_on_user_id"
   end
 
   add_foreign_key "activities", "users"
