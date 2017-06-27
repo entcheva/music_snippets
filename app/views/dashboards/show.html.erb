@@ -1,13 +1,19 @@
-<script src="./assets/javascripts/vextab-div.js"></script>
+<script src="./assets/assetsjavascripts/vextab-div.js"></script>
 
 <div id='dashboard-header'>
   <h1>Welcome to the Music Snippets dashboard!</h1>
   <%= link_to "Save a snippet", new_snippet_path %>
   <%= link_to "Save an audio file", new_audio_file_path %>
   <%= link_to "Save a wishlist item", new_wishlist_path %>
-  <h2>🎹 Latest music snippet activity: 🎸</h2>
 </div>
+
+<h2>🎹 Latest activity: 🎸</h2>
 
 <div class="snippet">
   <%= render @activities %>
+</div>
+
+<h2>🎹 Music suggestions: 🎸</h2>
+<div class="snippet">
+  <%= @arctic_monkeys %>
 </div>

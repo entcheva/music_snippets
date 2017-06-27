@@ -11,6 +11,7 @@ gem "paperclip"
 gem 'pg'
 gem 'puma'
 gem 'rails'
+gem "rspotify"
 gem 'simple_form'
 gem "slim"
 gem 'turbolinks'
@@ -27,6 +28,7 @@ group :development, :test do
   gem 'byebug'
   gem 'capybara'
   gem 'database_cleaner'
+  gem "dotenv-rails"
   gem 'factory_girl_rails'
   gem 'launchy'
   gem 'pry'

@@ -23,3 +23,6 @@ module MusicSnippets
     # -- all .rb files in that directory are automatically loaded.
   end
 end
+
+# RSpotify
+RSpotify::authenticate(ENV["SPOTIFY_CLIENT_ID"], ENV["SPOTIFY_CLIENT_SECRET"])
