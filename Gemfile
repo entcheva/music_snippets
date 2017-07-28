@@ -5,7 +5,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem "capybara-webkit"
 gem "clearance"
 gem 'jquery-rails'
 gem "paperclip"
@@ -28,6 +27,7 @@ end
 group :development, :test do
   gem 'byebug'
   gem 'capybara'
+  gem "capybara-webkit"
   gem 'database_cleaner'
   gem "dotenv-rails"
   gem 'factory_girl_rails'
