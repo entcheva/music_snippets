@@ -57,4 +57,7 @@ Rails.application.configure do
 
   # Paperclip
   Paperclip.options[:command_path] = "/usr/local/bin/"
+
+  # enable caching in development
+  config.action_controller.perform_caching = true
 end

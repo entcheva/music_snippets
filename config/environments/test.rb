@@ -48,4 +48,7 @@ Rails.application.configure do
   Paperclip::Attachment.default_options[:path] = (
     "#{Rails.root}/public/system/:class/:id_partition/:style.:extension"
   )
+
+  # enable caching in test
+  config.action_controller.perform_caching = true
 end
