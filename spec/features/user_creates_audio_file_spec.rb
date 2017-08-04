@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.feature "User creates audio file" do
   scenario "successfully" do
-    user = FactoryGirl.create(:user)
+    user = create(:user)
     artist = "Artist name"
     title = "Song title"
 

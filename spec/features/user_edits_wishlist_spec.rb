@@ -2,8 +2,8 @@ require "rails_helper"
 
 RSpec.feature "user edits wishlist" do
   scenario "successfully" do
-    user = FactoryGirl.create(:user)
-    wishlist = FactoryGirl.create(:wishlist, user: user)
+    user = create(:user)
+    wishlist = create(:wishlist, user: user)
     new_instrument = "ukelele"
 
     visit edit_wishlist_path(wishlist, as: user)

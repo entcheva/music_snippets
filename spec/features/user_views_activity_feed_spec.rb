@@ -2,10 +2,10 @@ require "rails_helper"
 
 RSpec.feature "user views activity feed" do
   scenario "successfully" do
-    user = FactoryGirl.create(:user)
-    snippet = FactoryGirl.create(:activity, :snippet_type, user: user)
-    audio = FactoryGirl.create(:activity, :audio_file_type, user: user)
-    wishlist = FactoryGirl.create(:activity, :wishlist_type, user: user)
+    user = create(:user)
+    snippet = create(:activity, :snippet_type, user: user)
+    audio = create(:activity, :audio_file_type, user: user)
+    wishlist = create(:activity, :wishlist_type, user: user)
 
     visit dashboard_path(as: user)
 

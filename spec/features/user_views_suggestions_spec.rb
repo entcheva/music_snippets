@@ -2,8 +2,8 @@ require "rails_helper"
 
 RSpec.feature "user views suggestions", :js do
   scenario "successfully" do
-    user = FactoryGirl.create(:user)
-    activities = FactoryGirl.create_pair(:activity, user: user)
+    user = create(:user)
+    activities = create_pair(:activity, user: user)
 
     token = double(SpotifyAuthenticator)
     allow(SpotifyAuthenticator).to receive(:new).and_return(token)
