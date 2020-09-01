@@ -27,7 +27,6 @@ end
 group :development, :test do
   gem 'byebug'
   gem 'capybara'
-  gem "capybara-webkit"
   gem 'database_cleaner'
   gem "dotenv-rails"
   gem 'factory_girl_rails'
