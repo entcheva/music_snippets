@@ -5,7 +5,7 @@ RSpec.describe AudioFilesController do
     it "creates a new activity" do
       allow(Activity).to receive(:create!)
 
-      user = FactoryGirl.create(:user)
+      user = create(:user)
       mock_audio_file = stub_relation(user, :audio_files)
 
       sign_in_as(user)

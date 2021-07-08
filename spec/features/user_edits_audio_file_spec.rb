@@ -2,8 +2,8 @@ require "rails_helper"
 
 RSpec.feature "user edits audio file" do
   scenario "successfully" do
-    user = FactoryGirl.create(:user)
-    audio_file = FactoryGirl.create(:audio_file, user: user)
+    user = create(:user)
+    audio_file = create(:audio_file, user: user)
     new_file = "#{Rails.root}/spec/support/fixtures/test.aif"
 
     visit edit_audio_file_path(audio_file, as: user)
@@ -20,9 +20,9 @@ RSpec.feature "user edits audio file" do
   end
 
   scenario "only if they have created it" do
-    user = FactoryGirl.create(:user)
-    other_user = FactoryGirl.create(:user)
-    audio_file = FactoryGirl.create(:audio_file, user: user)
+    user = create(:user)
+    other_user = create(:user)
+    audio_file = create(:audio_file, user: user)
 
     visit edit_audio_file_path(audio_file, as: user)
 

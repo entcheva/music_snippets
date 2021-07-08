@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe SuggestionsJobStatusesController do
   describe "#show" do
     it "renders a job status successfully" do
-      user = FactoryGirl.create(:user)
+      user = create(:user)
       sign_in_as(user)
       payload = {
         album: "The Soft Moon",

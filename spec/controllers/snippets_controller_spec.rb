@@ -5,7 +5,7 @@ RSpec.describe SnippetsController do
     it "creates a new activity" do
       allow(Activity).to receive(:create!)
 
-      user = FactoryGirl.create(:user)
+      user = create(:user)
       mock_snippet = stub_relation(user, :snippets)
 
       sign_in_as(user)

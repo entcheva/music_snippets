@@ -4,7 +4,7 @@ RSpec.describe WishlistsController do
   describe "POST #create" do
     context "successfully creates new wishlist" do
       it "redirects to dashboard path" do
-        user = FactoryGirl.create(:user)
+        user = create(:user)
         sign_in_as(user)
 
         post(
@@ -25,7 +25,7 @@ RSpec.describe WishlistsController do
       it "creates new activity" do
         allow(Activity).to receive(:create!)
 
-        user = FactoryGirl.create(:user)
+        user = create(:user)
         mock_wishlist = stub_relation(user, :wishlists)
 
         sign_in_as(user)
@@ -50,7 +50,7 @@ RSpec.describe WishlistsController do
 
     context "fails to create new wishlist" do
       it "renders the new view" do
-        user = FactoryGirl.create(:user)
+        user = create(:user)
         sign_in_as(user)
 
         post(
@@ -73,8 +73,8 @@ RSpec.describe WishlistsController do
   describe "GET #edit" do
     context "wishlist does NOT belong to current user" do
       it "does NOT allow user to edit wishlist" do
-        user = FactoryGirl.create(:user)
-        wishlist = FactoryGirl.create(:wishlist)
+        user = create(:user)
+        wishlist = create(:wishlist)
         sign_in_as(user)
 
         expect {
@@ -87,8 +87,8 @@ RSpec.describe WishlistsController do
   describe "PATCH #update" do
     context "successfully updates wishlist" do
       it "redirects to dashboard path" do
-        user = FactoryGirl.create(:user)
-        wishlist = FactoryGirl.create(:wishlist, user: user)
+        user = create(:user)
+        wishlist = create(:wishlist, user: user)
         sign_in_as(user)
 
         patch(
@@ -110,8 +110,8 @@ RSpec.describe WishlistsController do
       it "creates new activity" do
         allow(Activity).to receive(:create!)
 
-        user = FactoryGirl.create(:user)
-        wishlist = FactoryGirl.create(:wishlist, user: user)
+        user = create(:user)
+        wishlist = create(:wishlist, user: user)
         sign_in_as(user)
 
         patch(
@@ -136,8 +136,8 @@ RSpec.describe WishlistsController do
 
     context "fails to update wishlist" do
       it "renders the edit view" do
-        user = FactoryGirl.create(:user)
-        wishlist = FactoryGirl.create(:wishlist, user: user)
+        user = create(:user)
+        wishlist = create(:wishlist, user: user)
         sign_in_as(user)
 
         patch(

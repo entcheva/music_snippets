@@ -2,8 +2,8 @@ require "rails_helper"
 
 RSpec.feature "User edits snippet" do
   scenario "successfully" do
-    user = FactoryGirl.create(:user)
-    snippet = FactoryGirl.create(:snippet, user: user)
+    user = create(:user)
+    snippet = create(:snippet, user: user)
     new_artist = "The Beatles"
 
     visit edit_snippet_path(snippet, as: user)
@@ -18,8 +18,8 @@ RSpec.feature "User edits snippet" do
   end
 
   scenario "unsuccessfully" do
-    user = FactoryGirl.create(:user)
-    snippet = FactoryGirl.create(:snippet, user: user)
+    user = create(:user)
+    snippet = create(:snippet, user: user)
 
     visit edit_snippet_path(snippet, as: user)
 
@@ -36,9 +36,9 @@ RSpec.feature "User edits snippet" do
   end
 
   scenario "only if they have created it" do
-    user = FactoryGirl.create(:user)
-    other_user = FactoryGirl.create(:user)
-    snippet = FactoryGirl.create(:snippet, user: user)
+    user = create(:user)
+    other_user = create(:user)
+    snippet = create(:snippet, user: user)
 
     visit edit_snippet_path(snippet, as: user)
 
